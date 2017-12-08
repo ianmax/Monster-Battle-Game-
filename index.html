@@ -34,15 +34,19 @@
     </section>
     <section class="row controls" v-if="!gameIsRunning">
         <div class="small-12 columns">
-            <button id="start-game"@click="startGame">START NEW GAME</button>
+            <button id="start-game" @click="startGame">START NEW GAME</button>
         </div>
     </section>
     <section class="row controls" v-else>
         <div class="small-12 columns">
             <button id="attack" @click="attack">ATTACK</button>
+            <audio ref="audioElm" src="./sound/sword.mp3"></audio>
             <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+            <audio ref="magic" src="./sound/magic.mp3"></audio>
             <button id="heal" @click="heal">HEAL</button>
+            <audio ref="slurp" src="./sound/slurp.mp3"></audio>
             <button id="give-up" @click="giveUp">GIVE UP</button>
+            <audio ref="epic" src="./sound/epic.mp3"></audio>
         </div>
     </section>
     <section class="row log" v-if="turns.length > 0">

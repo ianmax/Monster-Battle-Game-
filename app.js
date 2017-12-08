@@ -14,6 +14,7 @@ new Vue({
             this.turns = [];
         },
         attack: function() {
+            this.$refs.audioElm.play();
             var damage = this.calculateDamage(3, 10);
             this.monsterHealth -= damage;
             this.turns.unshift({
@@ -27,6 +28,7 @@ new Vue({
             this.monsterAttacks();
         },
         specialAttack: function() {
+            this.$refs.magic.play();
             var damage = this.calculateDamage(10, 25);
             this.monsterHealth -= damage
             this.turns.unshift({
@@ -40,6 +42,7 @@ new Vue({
             this.monsterAttacks();
         },
         heal: function() {
+            this.$refs.slurp.play();
             if (this.playerHealth <= 75) {
                 this.playerHealth += 25;
             } else {
@@ -52,12 +55,14 @@ new Vue({
             this.monsterAttacks();
         },
         giveUp: function() {
+            
             if (confirm('ARE YOU SURE WANNA GIVE UP?')) {
                 this.gameIsRunning = false;
             }
             return true;
         },
         monsterAttacks: function() {
+            this.$refs.epic.play();
             var damage = this.calculateDamage(5, 20);
             this.playerHealth -= damage;
             this.checkWin();
